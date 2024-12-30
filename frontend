@@ -1,0 +1,4 @@
+#! /bin/bash
+
+cd vite_frontend
+npm run dev
