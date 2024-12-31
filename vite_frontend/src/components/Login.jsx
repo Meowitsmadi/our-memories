@@ -6,7 +6,7 @@ const Login = () => {
         username: '',
         password: '',
       });
-      const navigate = useNavigate();
+    const navigate = useNavigate();
     const [errors, setErrors] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
     const [usernameError, setUsernameError] = useState('');

@@ -6,12 +6,14 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-route
 import { jwtDecode } from "jwt-decode"; 
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
+import LandingPage from "./components/LandingPage";
 import './App.css'
 
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Dashboard />} />
       </Routes>

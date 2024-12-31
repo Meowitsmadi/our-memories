@@ -8,12 +8,12 @@ from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
 
-class HomeView(APIView):
+# class HomeView(APIView):
      
-   permission_classes = (IsAuthenticated, )
-   def get(self, request):
-       content = {'message': 'Welcome to the JWT Authentication page using React Js and Django!'}
-       return Response(content)
+#    permission_classes = (IsAuthenticated, )
+#    def get(self, request):
+#        content = {'message': 'Welcome to the JWT Authentication page using React Js and Django!'}
+#        return Response(content)
    
 class LoginView(APIView):
        permission_classes = (AllowAny, )
@@ -32,7 +32,6 @@ class LoginView(APIView):
            else:
                return Response({"Invalid login credentials"}, status=status.HTTP_400_BAD_REQUEST)
 
-   
 class LogoutView(APIView):
     permission_classes = (IsAuthenticated, )
     def post(self, request):
@@ -44,5 +43,4 @@ class LogoutView(APIView):
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-
 

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-echo "Message: directe to django_backend" 
+echo "Message: directed to django_backend" 
 echo " "
 cd django_backend
 
