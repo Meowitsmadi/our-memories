@@ -7,6 +7,7 @@ import { jwtDecode } from "jwt-decode";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import LandingPage from "./components/LandingPage";
+import Signup from "./components/Signup";
 import './App.css'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Dashboard />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </Router>
   );

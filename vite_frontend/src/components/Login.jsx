@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Navbar from "./Navbar";
 
 const Login = () => {
     const [formData, setFormData] = useState({
-        username: '',
+        email: '',
         password: '',
       });
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Login = () => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              username: formData.username,
+              email: formData.email,
               password: formData.password,
             }),
         };  
@@ -54,7 +55,7 @@ const Login = () => {
     
         // Validate required fields
         let validationErrors = {};
-        if (!formData.username) validationErrors.username = 'Username is required';
+        if (!formData.email) validationErrors.email = 'Email is required';
         if (!formData.password) validationErrors.password = 'Password is required';
     
         if (Object.keys(validationErrors).length > 0) {
@@ -66,20 +67,21 @@ const Login = () => {
 
     return (
         <>
+         <Navbar />
         <div>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username" className="form-label">
-                    Username<span className="required-asterisk">*</span>
+                    Email:<span className="required-asterisk">*</span>
                 </label>
                 <input
                         type="text"
-                        className={`form-control form-control-lg ${errors.username ? 'is-invalid' : ''}`}
-                        name="username"
-                        value={formData.username}
+                        className={`form-control form-control-lg ${errors.email ? 'is-invalid' : ''}`}
+                        name="email"
+                        value={formData.email}
                         onChange={handleChange}
                 />
                 <label htmlFor="password" className="form-label">
-                    Password<span className="required-asterisk">*</span>
+                    Password:<span className="required-asterisk">*</span>
                 </label>
                 <input
                     type="password"
