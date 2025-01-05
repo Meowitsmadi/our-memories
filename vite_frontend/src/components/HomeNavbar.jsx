@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import "./styling/Navbar.css"
 
 const handleLogout = async () => {
-    await AsyncStorage.removeItem("access_token");
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
     navigate("/")
   };
 
@@ -15,7 +16,7 @@ const HomeNavbar = () => {
             <div class="links">
                 <Link to="/home">Home</Link>
                 <Link to="/">About</Link>
-                <Link to="/">Logout</Link>
+                <a href="/" onClick={handleLogout}>Logout</a>
             </div>
         </header>
         
