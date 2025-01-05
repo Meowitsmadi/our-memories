@@ -9,11 +9,11 @@ const handleLogout = async () => {
 
 const HomeNavbar = () => {
     return (
-        <header class="navbar">
-            <div class="logo">
+        <header className="navbar">
+            <div className="logo">
                 <Link to="/">Logo</Link>
             </div> 
-            <div class="links">
+            <div className="links">
                 <Link to="/home">Home</Link>
                 <Link to="/">About</Link>
                 <a href="/" onClick={handleLogout}>Logout</a>

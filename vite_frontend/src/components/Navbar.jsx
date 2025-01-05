@@ -3,12 +3,11 @@ import "./styling/Navbar.css"
 
 const Navbar = () => {
     return (
-        <header class="navbar">
-            <div class="logo">
+        <header className="navbar">
+            <div className="logo">
                 <Link to="/">Logo</Link>
             </div> 
-            <div class="links">
-                <Link to="/home">Home</Link>
+            <div className="links">
                 <Link to="/">About</Link>
                 <Link to="/login">Login</Link>
                 <Link to="/signup">Sign Up</Link>
