@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from "./Navbar";
+import "./styling/Login.css"
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -10,14 +11,12 @@ const Login = () => {
     const navigate = useNavigate();
     const [errors, setErrors] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
-    const [usernameError, setUsernameError] = useState('');
 
     const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
         });
-        setUsernameError('');
         setErrorMessage('');
     };
 
@@ -61,38 +60,51 @@ const Login = () => {
         if (Object.keys(validationErrors).length > 0) {
           setErrors(validationErrors);
         } else {
+          setErrorMessage('');
           submitLogin();
         }
       };
 
     return (
         <>
-         <Navbar />
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username" className="form-label">
-                    Email:<span className="required-asterisk">*</span>
-                </label>
-                <input
-                        type="text"
-                        className={`form-control form-control-lg ${errors.email ? 'is-invalid' : ''}`}
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                />
-                <label htmlFor="password" className="form-label">
-                    Password:<span className="required-asterisk">*</span>
-                </label>
-                <input
-                    type="password"
-                    className={`form-control form-control-lg ${errors.password ? 'is-invalid' : ''}`}
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
-                <button type="submit">Login</button>
-                {errorMessage && <p>{errorMessage}</p>}
-            </form>
+        <Navbar />
+        <div className="login-container">
+            <div className="login-form">
+                <p className="login-text">Login</p>
+                <p className="signup-text">Don't have an account? <a href="/signup" className="signup-link">Sign up</a><strong></strong></p>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-container">
+                        <label htmlFor="email" className="form-label">
+                            Email<span className="required-asterisk">*</span>
+                        </label>
+                        <input
+                                id="email"
+                                type="text"
+                                name="email"
+                                className={`form-control form-control-lg ${errors.email ? 'is-invalid' : ''}`}
+                                value={formData.email}
+                                onChange={handleChange}
+                        />
+                        {errors.email && <div className="error-msgs">{errors.email}</div>}
+                    </div>
+                    <div className="form-container">
+                        <label htmlFor="password" className="form-label">
+                            Password<span className="required-asterisk">*</span>
+                        </label>
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            className={`form-control form-control-lg ${errors.password ? 'is-invalid' : ''}`}
+                            value={formData.password}
+                            onChange={handleChange}
+                        />
+                        {errors.password && <div className="error-msgs">{errors.password}</div>}
+                    </div>
+                    <button type="submit" className="login-button">Login</button>
+                    {errorMessage && <div className="error-msgs">{errorMessage}</div>}
+                </form>
+            </div>
         </div>
         </>    
     );

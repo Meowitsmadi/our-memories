@@ -9,6 +9,7 @@ import Dashboard from "./components/Dashboard";
 import LandingPage from "./components/LandingPage";
 import Signup from "./components/Signup";
 import CreateAlbum from "./scrapbook_components/CreateAlbum";
+import AlbumMenu from "./scrapbook_components/AlbumMenu";
 import './App.css'
 
 const ProtectedRoute = ({ children }) => {
@@ -53,6 +54,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/albums/:albumId/pages" element={<AlbumMenu/>} />
       </Routes>
     </Router>
   );

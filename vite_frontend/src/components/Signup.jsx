@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
+import "./styling/Signup.css"
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -64,50 +65,87 @@ const Signup = () => {
     return (
         <>
         <Navbar />
-        <form onSubmit={handleSubmit}>
-            <label>Email:</label>
-            <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-            />
-            <label>First Name:</label>
-            <input
-                type="text"
-                name="first_name"
-                value={formData.first_name}
-                onChange={handleChange}
-                required
-            />
-            <label>Last Name:</label>
-            <input
-                type="text"
-                name="last_name"
-                value={formData.last_name}
-                onChange={handleChange}
-                required
-            />
-            <label>Password:</label>
-            <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-            />
-            <label>Confirm Password:</label>
-            <input
-                type="password"
-                name="confirm_password"
-                value={formData.confirm_password}
-                onChange={handleChange}
-                required
-            />
-            <button type="submit">Sign Up</button>
-            {errorMessage && <p>{errorMessage}</p>}
-        </form>
+
+        <div className="signup-container">
+            <div className="signup-form">
+                <p className="signup-text2">Sign Up</p>
+                <p className="login-text2">Already have an account? <a href="/login" className="login-link2">Login</a><strong></strong></p>
+                <form onSubmit={handleSubmit}>
+                    <div className="signup-form-container">
+                        <label htmlFor="email" className="form-label">
+                            Email<span className="required-asterisk">*</span>
+                        </label>
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            className="form-control"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="signup-form-container">
+                        <label htmlFor="first_name" className="form-label">
+                            First Name<span className="required-asterisk">*</span>
+                        </label>
+                        <input
+                            id="first_name"
+                            type="text"
+                            name="first_name"
+                            className="form-control"
+                            value={formData.first_name}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="signup-form-container">
+                        <label htmlFor="last_name" className="form-label">
+                            Last Name<span className="required-asterisk">*</span>
+                        </label>
+                        <input
+                            id="last_name"
+                            type="text"
+                            name="last_name"
+                            className="form-control"
+                            value={formData.last_name}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="signup-form-container">
+                        <label htmlFor="password" className="form-label">
+                            Password<span className="required-asterisk">*</span>
+                        </label>
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            className="form-control"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+
+                    <div className="signup-form-container">
+                        <label htmlFor="confirm_password" className="form-label">
+                            Confirm Password<span className="required-asterisk">*</span>
+                        </label>
+                        <input
+                            type="password"
+                            name="confirm_password"
+                            className="form-control"
+                            value={formData.confirm_password}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <button type="submit" className="signup-button">Sign Up</button>
+                    {errorMessage && <div className="error-msgs">{errorMessage}</div>}
+                    </form>
+            </div>
+        </div>
         </>    
     );
 };

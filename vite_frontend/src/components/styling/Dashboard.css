@@ -1,0 +1,20 @@
+.album-card-container {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.album-card {
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+    padding: 20px;
+    border: 1px solid #B99179;
+}
+
+.album-card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+

@@ -2,5 +2,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-     path('albums/create/', views.CreateAlbumView.as_view(), name ='create_album')
+     path('albums/create/', views.CreateAlbumView.as_view(), name ="create_album"),
+     path('albums/display/', views.DisplayAlbumsView.as_view(), name="display_albums"),
+     path('albums/<int:album_id>/pages/', views.DisplayPagesInAlbum.as_view(), name="display_pages"),
+     path('pages/create/', views.CreatePageView.as_view(), name="create_page"),
+     path('albums/<int:album_id>/pages/<int:page_id>/media/create/', views.CreateMediaView.as_view(), name="create_media"),
 ]

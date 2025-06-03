@@ -1,0 +1,82 @@
+body {
+    background-color: #FAF5F0;
+}
+
+/* Box holding all elements */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #D5BDAF;
+    width: 400px;
+    height: 500px;
+    border: 1px solid #B99179;
+}
+
+/* Large "Login" text */
+.login-text {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 32px;
+    color: #403233;
+}
+
+/* Smaller signup text */
+.signup-text {
+    margin: 0 0;
+    font-size: 15px;
+    color: #403233;
+    text-decoration: none;
+}
+
+/* Sign up link */
+.signup-link {
+    text-decoration: underline;
+    color: #403233;
+    font-weight: bold;
+}
+
+.signup-link:hover {
+    color:white;
+}
+
+/* Each form element (label and input field together) */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+/* Form label text ex.) Email, password, etc */
+.form-label {
+    font-size: 18px;
+    color: #403233;
+}
+
+/* Input fields */
+.form-control {
+    width: 216px;
+    height: 25px;
+    border: none;
+}
+
+/* Login button */
+.login-button {
+    color: white;
+    background-color: #403233;
+    border-radius: 0;
+    margin-top: 20px;
+}
+
+/* error msgs based on email & password errors */
+.error-msgs {
+    color: red;
+
+}
+
+.required-asterisk {
+    color: red;
+}
+
