@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, useParams } from 'react-router-dom';
 import HomeNavbar from "../components/HomeNavbar";
 import PageSidebar from "./PageSidebar";
+import PageEditor from "./PageEditor";
 import { useNavigate } from 'react-router-dom';
-// import Sidebar from 'react-sidebar-component';
 import { Rnd } from 'react-rnd';
 import { getPages } from '../utils/albums';
 
+
 const AlbumMenu = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const { albumId } = useParams();
     const [pages, setPages] = useState([]);
     const [currentPage, setCurrentPage] = useState("")
@@ -29,8 +30,10 @@ const AlbumMenu = () => {
 
     return (
         <div>
-            <PageSidebar></PageSidebar>
             <HomeNavbar />
+            <PageSidebar></PageSidebar>
+            <PageEditor></PageEditor>
+            
             
             
                 {/* <button onClick={handleNewPageClick}>Create New Page</button> */}

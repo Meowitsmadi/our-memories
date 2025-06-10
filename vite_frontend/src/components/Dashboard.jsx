@@ -49,7 +49,7 @@ const Dashboard = () => {
         <Slider {...settings}>
             {albums.length > 0 ? (
               albums.map((album) => (
-                <Link to={`/albums/${album.id}/pages/`} key={album.id} className="album-card">
+                <Link to={`/albums/${album.id}/pages/1`} key={album.id} className="album-card">
                     {album.cover_img ? (
                       <img
                         src={`http://127.0.0.1:8000${album.cover_img}`} // Use the full URL to the media file

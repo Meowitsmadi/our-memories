@@ -54,7 +54,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/albums/:albumId/pages" element={<AlbumMenu/>} />
+        <Route path="/albums/:albumId/pages/:order" element={<AlbumMenu/>} />
       </Routes>
     </Router>
   );

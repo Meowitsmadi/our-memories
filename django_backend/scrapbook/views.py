@@ -52,6 +52,14 @@ class DisplayPagesInAlbum(APIView):
         serializer = PageSerializer(pages, many=True)
         return Response(serializer.data)
 
+class DisplaySingularPageView(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request, album_id, order):
+        page = Page.objects.get(album__id=album_id, order=order)
+        serializer = PageSerializer(page)
+        return Response(serializer.data)
+
 class CreatePageView(APIView):
     permission_classes=[IsAuthenticated]
 

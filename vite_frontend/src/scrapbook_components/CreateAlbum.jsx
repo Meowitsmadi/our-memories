@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import HomeNavbar from "../components/HomeNavbar";
-// import { getAlbums } from './utils/getAlbums';
 
 const CreateAlbum = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
