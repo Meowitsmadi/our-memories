@@ -47,7 +47,7 @@ class Media(models.Model):
     # created_by = models.
 
     def __str__(self):
-        return f'PageID: {self.page} contains media type: {self.type}, created on {self.date_created}'
+        return f'{self.page} contains media type: {self.type}, created on {self.date_created}'
 
 
 

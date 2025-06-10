@@ -1,3 +1,18 @@
+h2 {
+    color: #403233;
+    margin-top: 0;
+}
+
+.create-album-button-container {
+    margin-bottom: 25px;
+}
+
+.create-album-button {
+    color: white;
+    background-color: #403233;
+    border-radius: 0; 
+}
+
 .album-carousel {
     margin: 0 auto;
     width: 100%;
@@ -21,8 +36,13 @@
 }
 
 .album-card-title {
+    color: #403233;
     font-size: 18px;
     font-weight: bold;
     padding-top: 10px;
+}
+
+.album-card-date {
+    color: #403233;
 }
 

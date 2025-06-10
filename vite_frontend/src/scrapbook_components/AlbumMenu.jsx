@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, useParams } from 'react-router-dom';
 import HomeNavbar from "../components/HomeNavbar";
+import PageSidebar from "./PageSidebar";
 import { useNavigate } from 'react-router-dom';
+// import Sidebar from 'react-sidebar-component';
+import { Rnd } from 'react-rnd';
 import { getPages } from '../utils/albums';
 
 const AlbumMenu = () => {
@@ -26,9 +29,14 @@ const AlbumMenu = () => {
 
     return (
         <div>
+            <PageSidebar></PageSidebar>
             <HomeNavbar />
-            <button /*onClick={handleNewPageClick} */>Create New Page</button>
-            {pages.length > 0 ? (
+            
+            
+                {/* <button onClick={handleNewPageClick}>Create New Page</button> */}
+            
+            
+            {/* {pages.length > 0 ? (
                 pages.map((page) => (
                     // <Link to={`/albums/${album.id}/pages/`} key={album.id}>
                     <div className="page-card">
@@ -38,7 +46,7 @@ const AlbumMenu = () => {
                 ))
             ) : (
             <p>No pages found. Create your first page!</p>
-            )}  
+            )}  */}
         </div>
     );
 }

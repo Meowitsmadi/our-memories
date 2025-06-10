@@ -29,6 +29,22 @@ class DisplayAlbumsView(APIView):
         serializer = AlbumSerializer(albums, many=True)
         return Response(serializer.data)
 
+class UpdateAlbumView(APIView):
+    permission_classes = [IsAuthenticated]
+    parser_classes = [MultiPartParser, FormParser]
+
+    def patch(self, request, album_id):
+        album = Album.objects.get(id=album_id, user=request.user)
+        serializer = AlbumSerializer(album, data=request.data, partial=True)
+        if serializer.is_valid():
+            album = serializer.save()
+            return Response({
+                "message": "Album updated successfully",
+                "album_name": album.name,
+                "album_cover": album.cover_img,
+            }, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 class DisplayPagesInAlbum(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request, album_id):

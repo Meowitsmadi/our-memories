@@ -14,6 +14,8 @@ class AlbumSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         instance.name=validated_data.get('name', instance.name)
+        if 'cover_img' in validated_data:
+            instance.cover_img = validated_data.get('cover_img', instance.cover_img)
         instance.save()
         return instance
     

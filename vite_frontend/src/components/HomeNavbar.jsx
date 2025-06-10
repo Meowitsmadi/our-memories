@@ -10,7 +10,7 @@ const handleLogout = async () => {
 const HomeNavbar = () => {
     return (
         <header className="navbar">
-            <div className="logo">
+            <div style = {{height: '24px'}} className="logo">
                 <Link>Logo</Link>
             </div> 
             <div className="links">

@@ -39,7 +39,12 @@ const Dashboard = () => {
   return (
     <div>
       <HomeNavbar />
-      <button onClick={handleNewAlbumClick}>Create New Album</button>
+      <div>
+        <h2>Albums</h2>
+      </div>
+      <div className="create-album-button-container">
+        <button onClick={handleNewAlbumClick} className="create-album-button">Create New Album</button>
+      </div>
       <div className="album-carousel">
         <Slider {...settings}>
             {albums.length > 0 ? (
@@ -51,10 +56,10 @@ const Dashboard = () => {
                         alt={`${album.name} cover`}
                       />
                     ) : (
-                      <p>No cover image</p>
+                      <p style={{color: "#403233"}}>No cover image</p>
                     )}
                     <div className="album-card-title">{album.name}</div> 
-                    Created on {new Date(album.date_created).toLocaleDateString()}
+                    <span className="album-card-date">Created on {new Date(album.date_created).toLocaleDateString()}</span>
                 </Link>
               ))
             ) : (
@@ -62,6 +67,7 @@ const Dashboard = () => {
             )}
         </Slider>
       </div>
+
     </div>
   );
 }

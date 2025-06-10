@@ -1,0 +1,22 @@
+.sidebar-container {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    height: 100vh;
+    width: 200px;
+    background-color: #403233;
+}
+
+.sidebar-option {
+    padding: 20px;
+    width: 200px;
+    text-align: start;
+    color: white;
+    background-color: #403233;
+    border-radius: 0;
+}
+
+.sidebar-option:hover {
+    background-color: #2e2425;
+    border: none;
+}

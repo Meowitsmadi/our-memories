@@ -54,10 +54,17 @@ const CreateAlbum = () => {
         }
     };
 
+    const navigateHome = () => {
+        navigate("/home");
+    };
+
     return (
         <>
         <HomeNavbar/>
         <div>
+            <div className="back-button-container">
+                <button onClick={navigateHome} className="back-button">Back</button>
+            </div>
             <form onSubmit={handleAlbumCreation}>
                 <label>Name:</label>
                 <input
