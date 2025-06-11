@@ -3,10 +3,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from .models import Album, Page, Media
 from .serializers import AlbumSerializer, PageSerializer, MediaSerializer
 
+# ---- ALBUM VIEWS ----
 class CreateAlbumView(APIView):
     permission_classes=[IsAuthenticated]
     parser_classes = [MultiPartParser, FormParser]
@@ -45,6 +46,7 @@ class UpdateAlbumView(APIView):
             }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+# ---- PAGE VIEWS ----
 class DisplayPagesInAlbum(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request, album_id):
@@ -55,8 +57,8 @@ class DisplayPagesInAlbum(APIView):
 class DisplaySingularPageView(APIView):
     permission_classes = [IsAuthenticated]
     
-    def get(self, request, album_id, order):
-        page = Page.objects.get(album__id=album_id, order=order)
+    def get(self, request, album_id, page_id):
+        page = Page.objects.get(album__id=album_id, id=page_id)
         serializer = PageSerializer(page)
         return Response(serializer.data)
 
@@ -73,6 +75,7 @@ class CreatePageView(APIView):
             }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+# ---- MEDIA VIEWS ----
 class CreateMediaView(APIView):
     permission_classes=[IsAuthenticated]
     parser_classes = [MultiPartParser, FormParser]
@@ -92,3 +95,25 @@ class CreateMediaView(APIView):
             }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class DisplayMediaView(APIView):
+    permission_classes=[IsAuthenticated]
+    parser_classes = [MultiPartParser, FormParser]
+
+    def get(self, request, album_id, page_id):
+        media_list = Media.objects.filter(album__id=album_id, page__id=page_id)
+        serializer = MediaSerializer(media_list, many=True)
+        return Response(serializer.data)
+
+class UpdateMediaView(APIView):
+    permission_classes=[IsAuthenticated]
+    parser_classes = [MultiPartParser, FormParser, JSONParser]
+
+    def patch(self, request, media_id):
+        media = Media.objects.get(id=media_id)
+        serializer = MediaSerializer(media, data=request.data, partial=True)
+        if serializer.is_valid():
+            media = serializer.save()
+            return Response({
+                "message": "Media updated successfully",
+            }, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

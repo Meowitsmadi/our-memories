@@ -38,7 +38,7 @@ class MediaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model=Media
-        fields=["id", "album", "page","type", "content", "date_created"]
+        fields=["id", "album", "page","type", "content", "x", "y", "width", "height", "date_created"]
         read_only_fields=["id", "album", "page", "date_created"]
 
     def create(self, validated_data):

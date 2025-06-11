@@ -1,34 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom'; 
+import "./styling/PageEditor.css"
 import { getPage } from '../utils/albums';
+
 
 const PageEditor = () => {
     // const navigate = useNavigate();
-    const { albumId, order } = useParams();
+    const { albumId, pageId } = useParams();
     const [page, setPage] = useState(null);
-
+    
     useEffect(() => {
               const loadPage = async () => {
                   try {
-                      const data = await getPage(albumId, order);
+                      const data = await getPage(albumId, pageId);
                       setPage(data);
                   } catch (error) {
                       console.error("Could not fetch page:", error);
                   }
               };
               loadPage();
-          }, [albumId, order]);
+          }, [albumId, pageId]);
 
     return (
         <div className="page-container">
              {page ? (
-                    // <Link to={`/albums/${album.id}/pages/`} key={album.id}>
                     <div className="page-card">
-                        <div className="page-card-title">{page.name}</div> 
-                        Created on {new Date(page.date_created).toLocaleDateString()}
+                        <div className="page-title">{page.name}</div> 
+                        {/* Created on {new Date(page.date_created).toLocaleDateString()} */}
                     </div>
             ) : (
-            <p>No pages found. Create your first page!</p>
+            <p>No pages found. Create a page from the sidebar!</p>
             )}  
         </div>
     );

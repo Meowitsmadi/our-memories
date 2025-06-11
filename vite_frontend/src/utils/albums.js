@@ -39,7 +39,7 @@ export const getPages = async (albumId) => {
     }  
 }
 
-export const getPage = async (albumId, order) => {
+export const getPage = async (albumId, page_id) => {
     const token = localStorage.getItem("access_token");
     const requestOptions = {
         method: 'GET',
@@ -49,7 +49,7 @@ export const getPage = async (albumId, order) => {
         },
     };
     try {
-        const response =  await fetch(`http://127.0.0.1:8000/scrapbook/albums/${albumId}/pages/${order}`, requestOptions);
+        const response =  await fetch(`http://127.0.0.1:8000/scrapbook/albums/${albumId}/pages/${page_id}`, requestOptions);
         const data = await response.json();
         console.log(data)
         return data;

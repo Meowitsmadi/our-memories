@@ -3,53 +3,22 @@ import { BrowserRouter as Router, Route, useParams } from 'react-router-dom';
 import HomeNavbar from "../components/HomeNavbar";
 import PageSidebar from "./PageSidebar";
 import PageEditor from "./PageEditor";
+import MediaRenderer from "./MediaRenderer";
 import { useNavigate } from 'react-router-dom';
-import { Rnd } from 'react-rnd';
-import { getPages } from '../utils/albums';
 
 
 const AlbumMenu = () => {
     // const navigate = useNavigate();
-    const { albumId } = useParams();
+    const { albumId, pageId } = useParams();
     const [pages, setPages] = useState([]);
     const [currentPage, setCurrentPage] = useState("")
-
-    useEffect(() => {
-              const loadPages = async () => {
-                  try {
-                      const data = await getPages(albumId);
-                      setPages(data);
-                      setCurrentPage(data[0])
-
-                  } catch (error) {
-                      console.error("Could not fetch pages:", error);
-                  }
-              };
-              loadPages();
-          }, []);
 
     return (
         <div>
             <HomeNavbar />
             <PageSidebar></PageSidebar>
             <PageEditor></PageEditor>
-            
-            
-            
-                {/* <button onClick={handleNewPageClick}>Create New Page</button> */}
-            
-            
-            {/* {pages.length > 0 ? (
-                pages.map((page) => (
-                    // <Link to={`/albums/${album.id}/pages/`} key={album.id}>
-                    <div className="page-card">
-                        <div className="page-card-title">{page.name}</div> 
-                        Created on {new Date(page.date_created).toLocaleDateString()}
-                    </div>
-                ))
-            ) : (
-            <p>No pages found. Create your first page!</p>
-            )}  */}
+            <MediaRenderer></MediaRenderer>
         </div>
     );
 }

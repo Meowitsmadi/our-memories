@@ -42,7 +42,10 @@ class Media(models.Model):
     page = models.ForeignKey(Page, on_delete=models.CASCADE, related_name="media")
     type = models.CharField(max_length=5, choices=MediaType)
     content = models.CharField(max_length=150)
-    # position = 
+    x = models.FloatField(default=400)
+    y = models.FloatField(default=200)
+    width = models.FloatField(default=50)
+    height = models.FloatField(default=50)
     date_created = models.DateTimeField(auto_now_add=True)
     # created_by = models.
 

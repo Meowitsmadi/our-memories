@@ -10,6 +10,7 @@ import LandingPage from "./components/LandingPage";
 import Signup from "./components/Signup";
 import CreateAlbum from "./scrapbook_components/CreateAlbum";
 import AlbumMenu from "./scrapbook_components/AlbumMenu";
+import MediaRenderer from './scrapbook_components/MediaRenderer';
 import './App.css'
 
 const ProtectedRoute = ({ children }) => {
@@ -54,7 +55,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/albums/:albumId/pages/:order" element={<AlbumMenu/>} />
+        <Route path="/albums/:albumId/pages/:pageId" element={<AlbumMenu/>} />
       </Routes>
     </Router>
   );
