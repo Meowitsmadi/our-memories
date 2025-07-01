@@ -37,3 +37,30 @@ export const updateMedia = async (mediaId, updates) => {
         console.error("Could not update media:", error);
     }  
 }
+
+export const createTextMedia = async (albumId, pageId) => {
+    const token = localStorage.getItem("access_token");
+
+    const params = {
+        type: "TXT",
+        content: "Text",
+    };
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(params),
+    };
+    try {
+        const response =  await fetch(`http://127.0.0.1:8000/scrapbook/albums/${albumId}/pages/${pageId}/media/create/`, requestOptions);
+        const data = await response.json();
+        console.log(data)
+        return data;
+    } catch (error) {
+        console.error("Could not create text media:", error);
+    }  
+}
+

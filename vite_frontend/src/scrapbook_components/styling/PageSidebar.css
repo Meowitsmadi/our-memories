@@ -15,6 +15,10 @@
     right: 5px;
 }
 
+.menu-button:hover {
+    cursor: pointer;
+}
+
 .sidebar-container ul {
     display: flex;
     flex-direction: column;

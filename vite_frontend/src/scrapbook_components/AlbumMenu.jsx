@@ -15,10 +15,11 @@ const AlbumMenu = () => {
 
     return (
         <div>
-            <HomeNavbar />
-            <PageSidebar></PageSidebar>
-            <PageEditor></PageEditor>
-            <MediaRenderer></MediaRenderer>
+            <MediaRenderer>
+                <HomeNavbar />
+                <PageSidebar />
+                <PageEditor />
+            </MediaRenderer>
         </div>
     );
 }

@@ -5,3 +5,7 @@
     color: #403233;
     font-size: 30px;
 }
+
+.editor-container {
+    border: 2px dashed red;
+}

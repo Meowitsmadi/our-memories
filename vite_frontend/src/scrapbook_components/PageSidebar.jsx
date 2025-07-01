@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate, useParams } from 'react-router-dom';
 import "./styling/PageSidebar.css"
 import 'boxicons'
-
-
+import MediaContext from '../context/MediaContext';
+import { createTextMedia } from '../utils/media';
 
 const PageSidebar = () => {
+    const { albumId, pageId } = useParams();
     const [isOpen, setIsOpen] = useState(true);
     const navigate = useNavigate();
+    const { handleTextCreation } = useContext(MediaContext);
+
 
     const navigateHome = () => {
         navigate("/home");
@@ -25,7 +28,7 @@ const PageSidebar = () => {
                 <li className="sidebar-option">Edit Cover Image</li>
                 <li className="sidebar-option">Create New Page</li>
                 <li className="sidebar-option">Upload Image</li>
-                <li className="sidebar-option">Add Text</li>
+                <li onClick={handleTextCreation} className="sidebar-option">Add Text</li>
                 </ul>
             </div>
             
