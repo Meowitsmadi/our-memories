@@ -11,5 +11,6 @@ urlpatterns = [
      path('albums/<int:album_id>/pages/<int:page_id>/media/create/', views.CreateMediaView.as_view(), name="create_media"),
      path('albums/<int:album_id>/pages/<int:page_id>/media/', views.DisplayMediaView.as_view(), name="display_media"),
      path('media/<int:media_id>/update/', views.UpdateMediaView.as_view(), name="update_media"),
+     path('media/<int:media_id>/delete/', views.DeleteMediaView.as_view(), name="delete_media"),
 
 ]

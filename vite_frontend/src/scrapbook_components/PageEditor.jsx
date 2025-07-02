@@ -11,7 +11,7 @@ const PageEditor = () => {
     const { albumId, pageId } = useParams();
     const [page, setPage] = useState(null);
     const [clickedMedia, setClickedMedia] = useState(null);
-    const { mediaList, setPosition, setSize } = useContext(MediaContext);
+    const { mediaList, setPosition, setSize, handleTextDeletion } = useContext(MediaContext);
     
     useEffect(() => {
               const loadPage = async () => {
@@ -26,7 +26,8 @@ const PageEditor = () => {
           }, [albumId, pageId]);    
 
     return (
-        <div className="editor-container" onClick={() => setClickedMedia(null)}>
+        <div className="editor-container">
+            <div className="editor-overlay" onClick={() => setClickedMedia(null)}></div>
             {mediaList.map((media) => (
                 <Rnd key={media.id}
                 onClick={(e) => {
@@ -56,6 +57,16 @@ const PageEditor = () => {
                         alt=""
                     />
                     ) : null}
+
+                {clickedMedia === media.id && (
+                    <button className="x-button"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        handleTextDeletion(media.id);
+                    }}>
+                    x
+                    </button>
+                )}
                 </Rnd>
             ))}
             <div className="page-container">

@@ -4,6 +4,7 @@ import HomeNavbar from "../components/HomeNavbar";
 import PageSidebar from "./PageSidebar";
 import PageEditor from "./PageEditor";
 import MediaRenderer from "./MediaRenderer";
+import "./styling/AlbumMenu.css"
 import { useNavigate } from 'react-router-dom';
 
 
@@ -12,13 +13,14 @@ const AlbumMenu = () => {
     const { albumId, pageId } = useParams();
     const [pages, setPages] = useState([]);
     const [currentPage, setCurrentPage] = useState("")
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     return (
         <div>
             <MediaRenderer>
                 <HomeNavbar />
-                <PageSidebar />
-                <PageEditor />
+                    <PageSidebar />
+                    <PageEditor/>
             </MediaRenderer>
         </div>
     );

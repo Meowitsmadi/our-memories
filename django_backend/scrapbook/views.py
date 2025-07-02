@@ -112,3 +112,13 @@ class UpdateMediaView(APIView):
             media = serializer.save()
             return Response(MediaSerializer(media).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class DeleteMediaView(APIView):
+    permission_classes=[IsAuthenticated]
+    def delete(self, request, media_id):
+        media = Media.objects.get(id=media_id)
+        serializer = MediaSerializer(media, data=request.data, partial=True)
+        if serializer.is_valid():
+            Media.objects.get(id=media_id).delete()
+            return Response(MediaSerializer(media).data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

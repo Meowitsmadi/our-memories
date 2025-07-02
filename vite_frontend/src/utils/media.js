@@ -64,3 +64,22 @@ export const createTextMedia = async (albumId, pageId) => {
     }  
 }
 
+export const deleteTextMedia = async (mediaId) => {
+    const token = localStorage.getItem("access_token");
+
+    const requestOptions = {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+    }
+    try {
+        const response =  await fetch(`http://127.0.0.1:8000/scrapbook/media/${mediaId}/delete/`, requestOptions);
+        const data = await response.json();
+        console.log(data)
+        return data;
+    } catch (error) {
+        console.error("Could not delete text media:", error);
+    }  
+}

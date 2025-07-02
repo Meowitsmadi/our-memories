@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'; 
 import { Rnd } from 'react-rnd';
 import MediaContext from '../context/MediaContext';
-import { getMediaList, updateMedia, createTextMedia } from '../utils/media';
+import { getMediaList, updateMedia, createTextMedia, deleteTextMedia } from '../utils/media';
 
 const MediaRenderer = ({ children }) => {
     const [mediaList, setMediaList] = useState([]);
@@ -47,10 +47,21 @@ const MediaRenderer = ({ children }) => {
     const handleTextUpdate = async () => {
     }
 
+    const handleTextDeletion = async (mediaId) => {
+        try {
+            const data = await deleteTextMedia(mediaId);
+            setMediaList(prev => prev.filter(media => media.id !== mediaId));
+        }
+        catch (error) {
+            console.error("Could not delete media:", error);
+        }
+    }
+
     const contextValues = {
     mediaList,
     setMediaList,
     handleTextCreation,
+    handleTextDeletion,
     setPosition,
     setSize,
   };
@@ -58,31 +69,6 @@ const MediaRenderer = ({ children }) => {
     return (
         <MediaContext.Provider value={contextValues}>
             <div>
-            {/* <div className="editor-container">
-                {mediaList.map((media) => (
-                    <Rnd key={media.id}
-                    default={{
-                    x: media.x,
-                    y: media.y,
-                    width: media.width,
-                    height: media.height,
-                    }}
-                    position={{ x: media.x, y: media.y }}
-                    size={{ width: media.width, height: media.height }}
-                    onDragStop={(e, data) =>  setPosition(media.id, data.x, data.y)}
-                    onResizeStop={(e, direction, ref, delta, position) => setSize(media.id, parseInt(ref.offsetWidth), parseInt(ref.offsetHeight), parseInt(position.x), parseInt(position.y))}
-                    >
-                        {media.type === "TXT" ? (
-                            <div>{media.content}</div>
-                        ) :
-                        media.type === "IMG" ? (
-                            <img
-                            src={media.content}
-                            alt=""
-                        />
-                        ) : null}
-                    </Rnd>
-                ))} */}
                 {children}
             </div>
         </MediaContext.Provider>
